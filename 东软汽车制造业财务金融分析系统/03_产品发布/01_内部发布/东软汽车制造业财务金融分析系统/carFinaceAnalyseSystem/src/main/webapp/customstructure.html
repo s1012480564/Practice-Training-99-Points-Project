@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结构分析</title>
+    <link href="css/commonstyle.css" type="text/css" rel="stylesheet"/>
+    <link href="css/customstructurestyle.css" type="text/css" rel="stylesheet"/>
+    <script src="script/echarts.min.js"></script>
+    <script src="script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<img class="left_bg" src="images/top.png" />
+<img class="top_bg" src="images/top.png" />
+<img class="top_icon" src="images/icon.png" />
+<p><span class="top_title">财务金融分析系统 ·</span></p>
+<p><span class="top_subtitle">东软汽车制造业</span></p>
+<ul class="top_menu">
+    <li><a href="index1.html" style="width: 143px;">首页</a></li>
+    <li><a href="overall.html" style="width: 249px;">总体运行情况分析</a></li>
+    <li><a href="profitability.html" style="width: 218px;">获利能力分析</a></li>
+    <li><a href="custom.html" style="width: 203px;">自定义分析</a></li>
+    <li><a href="target.html" style="width: 203px;">基础数据维护</a></li>
+</ul>
+<a href="index1.html"><img class="top_icon1" src="images/topicon1.png" /></a>
+<a href="overall.html"><img class="top_icon2" src="images/topicon2.png" /></a>
+<a href="profitability.html"><img class="top_icon3" src="images/topicon3.png" /></a>
+<a href="custom.html"><img class="top_icon4" src="images/topicon4.png" /></a>
+<a href="target.html"><img class="top_icon5" src="images/topicon5.png" /></a>
+<ul class="left_menu">
+    <li><a href="customtrend.html">趋势分析</a></li>
+    <li><a href="customstructure.html">结构分析</a></li>
+    <li><a href="customcompany.html">分单位分析</a></li>
+    <li><a href="custommultitarget.html">多指标分析</a></li>
+</ul>
+<p><span id="customstructure_title">结构分析</span></p>
+<form id="frm">
+    <select class="opt_year_common2" id="year1" name="year1">
+        <option selected value="0">(请选择起始年份)</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+    </select>
+    <select class="opt_month_common2" id="month1" name="month1">
+        <option selected value="0">(请选择起始月份)</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+    <select class="opt_year_common_end" id="year2" name="year2">
+        <option selected value="0">(请选择结束年份)</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+    </select>
+    <select class="opt_month_common_end" id="month2" name="month2">
+        <option selected value="0">(请选择结束月份)</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+    <select class="opt_graph" id="type" name="type">
+        <option selected value="0">(请选择图线类型)</option>
+        <option value="bar">柱状图</option>
+        <option value="bar_rev">条形图</option>
+        <option value="line">折线图</option>
+        <option value="scatter">散点图</option>
+        <option value="pie">饼图</option>
+    </select>
+    <div class="r1_cls">
+        <input type="radio" id="r1" name="choice" value="cur" checked="checked" onclick="change1()">本月数
+    </div>
+    <div class="r2_cls">
+        <input type="radio" id="r2" name="choice" value="sum" onclick="change2()">全年累计数
+    </div>
+    <div class="cb1_cls">
+        <input type="checkbox" id="cb1" name="addition" value="preM"><span id="cb1_text">本月数</span>
+    </div>
+    <div class="cb2_cls">
+        <input type="checkbox" id="cb2" name="addition" value="preY"><span id="cb2_text">上年同期数</span>
+    </div>
+    <div class="cb3_cls">
+        <input type="checkbox" id="cb3" name="addition" value="pred"><span id="cb3_text">预测值</span>
+    </div>
+    <input type="hidden" name="addition">
+</form>
+<button class="opt_submit_common2" onclick="fun()">查询</button>
+<div id="dom" class="graph"></div>
+<script>
+    function change1(){
+        document.getElementById("cb1_text").innerHTML="上月数";
+        document.getElementById("cb2_text").innerHTML="上年同期数";
+    }
+    function change2(){
+        document.getElementById("cb1_text").innerHTML="上月累计数";
+        document.getElementById("cb2_text").innerHTML="上年同期累计数";
+    }
+    function fun(){
+        var params=$("#frm").serialize();
+        var year1=$("#year1").val();
+        var month1=$("#month1").val();
+        var year2=$("#year2").val();
+        var month2=$("#month2").val();
+        var graph=$("#type").val();
+        if(year1==="0"||month1==="0"||year2==="0"||month2==="0"||graph==="0") return;
+        if(parseInt(year1)*100+parseInt(month1)>parseInt(year2)*100+parseInt(month2)){
+            window.alert("起始时间必须小于等于结束时间");
+            return;
+        }
+        window.alert("提示：结构分析中，本月数返回仅结束月份单月，全年累计数仅返回从起始到截至的一个累计数")
+        window.alert("正在查询中...");
+        $.getJSON(
+            "customstructure.do",
+            params,
+            function(data){
+                window.alert("查询成功！");
+                var myChart=echarts.init(document.getElementById("dom"));
+                var a=data.dataset;
+                var cnt=data.cnt;
+                var types=new Array();
+                var xtype={type:'category',name:'款项名称'};
+                var ytype={name:'万元'};
+                if(graph==="bar_rev"){
+                    var tmp=xtype;
+                    xtype=ytype;
+                    ytype=tmp;
+                }
+                for(let i=0;i<cnt;i++){
+                    if(graph==="bar_rev"){
+                        types.push({type:"bar"});
+                    }
+                    else if(graph!=="pie"){
+                        types.push({type:graph});
+                    }
+                    else{
+                        switch(i){
+                            case 0:
+                                types.push({type:'pie',radius:'35%',center:['30%','30%']});
+                                break;
+                            case 1:
+                                types.push({type:'pie',radius:'35%',center:['70%','30%']});
+                                break;
+                            case 2:
+                                types.push({type:'pie',radius:'35%',center:['30%','70%']});
+                                break;
+                            case 3:
+                                types.push({type:'pie',radius:'35%',center:['70%','70%']});
+                                break;
+                        }
+                    }
+                }
+                var option = {
+                    legend: {},
+                    tooltip: {},
+                    dataset: {
+                        source: a
+                    },
+                    xAxis: xtype,
+                    yAxis: ytype,
+                    series: types
+                };
+                myChart.setOption(option,true);
+            }
+        )
+    }
+</script>
+</body>
+</html>

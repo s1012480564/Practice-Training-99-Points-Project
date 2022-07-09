@@ -1,0 +1,53 @@
+#customtrend_title{
+    position:absolute;
+    left:815px;
+    top:125px;
+    width:301px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.graph{
+    position:absolute;
+    left:370px;
+    top:525px;
+    width:1350px;
+    height:800px;
+}
+.r1_cls{
+    position:absolute;
+    left:852px;
+    top:405px;
+    width:100px;
+    height:23px;
+}
+.r2_cls{
+    position:absolute;
+    left:1023px;
+    top:405px;
+    width:118px;
+    height:23px;
+}
+.cb1_cls{
+    position:absolute;
+    left:852px;
+    top:470px;
+    width:119px;
+    height:23px;
+}
+.cb2_cls{
+    position:absolute;
+    left:1023px;
+    top:470px;
+    width:159px;
+    height:23px;
+}
+.cb3_cls{
+    position:absolute;
+    left:533px;
+    top:470px;
+    width:159px;
+    height:23px;
+}

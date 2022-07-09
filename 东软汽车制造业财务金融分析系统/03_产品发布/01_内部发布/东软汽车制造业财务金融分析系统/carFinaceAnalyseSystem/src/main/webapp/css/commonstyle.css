@@ -1,0 +1,238 @@
+.left_bg{
+    position:absolute;
+    left:0px;
+    top:65px;
+    width:250px;
+    height:3000px;
+}
+.top_bg{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1920px;
+    height:65px;
+}
+.top_icon{
+    position:absolute;
+    left:22px;
+    top:5px;
+    width:52px;
+    height:52px;
+}
+.top_title{
+    position:absolute;
+    left:84px;
+    top:10px;
+    width:276px;
+    height:37px;
+    font-size:32px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    color:#FFFFFF;
+}
+.top_subtitle{
+    position:absolute;
+    left:370px;
+    top:17px;
+    width:169px;
+    height:29px;
+    font-size:24px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    color:#FFFFFF;
+}
+.top_menu{
+    position:fixed;
+    list-style-type: none;
+    left:585px;
+    top:0px;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    width:1016px;
+    height:65px;
+    line-height:65px;
+}
+.top_menu li{
+    float:left;
+}
+.top_menu li a{
+    display:block;
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    height:65px;
+}
+.top_menu li a:hover {
+    background-color: #FF6600;
+}
+.top_icon1{
+    position:absolute;
+    left:600px;
+    top:22px;
+    width:25px;
+    height:25px;
+}
+.top_icon2{
+    position:absolute;
+    left:740px;
+    top:20px;
+    width:30px;
+    height:30px;
+}
+.top_icon3{
+    position:absolute;
+    left:995px;
+    top:22px;
+    width:25px;
+    height:25px;
+}
+.top_icon4{
+    position:absolute;
+    left:1215px;
+    top:22px;
+    width:25px;
+    height:25px;
+}
+.top_icon5{
+    position:absolute;
+    left:1410px;
+    top:22px;
+    width:25px;
+    height:25px;
+}
+.description{
+    position:absolute;
+    left:610px;
+    top:100px;
+    width:737px;
+    height:110px;
+    text-align:center;
+    font-size:32px;
+}
+.img_ad{
+    position:absolute;
+    left:450px;
+    top:220px;
+    width:1093px;
+    height:578px;
+}
+.left_menu{
+    position:fixed;
+    list-style-type: none;
+    left:0px;
+    top:67px;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    width:250px;
+    height:700px;
+    line-height:100px;
+}
+.left_menu li a{
+    display:block;
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    width:250px;
+    height:100px;
+}
+.left_menu li a:hover {
+    background-color: #FF6600;
+}
+.opt_year_common{
+    position:absolute;
+    left:543px;
+    top:231px;
+    width:227px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.opt_month_common{
+    position:absolute;
+    left:894px;
+    top:231px;
+    width:227px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.opt_submit_common{
+    position:absolute;
+    left:1267px;
+    top:231px;
+    width:140px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.opt_year_common2{
+    position:absolute;
+    left:499px;
+    top:231px;
+    width:227px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.opt_month_common2{
+    position:absolute;
+    left:852px;
+    top:231px;
+    width:227px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.opt_year_common_end{
+    position:absolute;
+    left:499px;
+    top:313px;
+    width:227px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.opt_month_common_end{
+    position:absolute;
+    left:852px;
+    top:313px;
+    width:227px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.opt_graph{
+    position:absolute;
+    left:499px;
+    top:393px;
+    width:227px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.opt_submit_common2{
+    position:absolute;
+    left:1231px;
+    top:269px;
+    width:140px;
+    height:36px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+em{
+    color:#FF0000;
+    font-style:normal
+}

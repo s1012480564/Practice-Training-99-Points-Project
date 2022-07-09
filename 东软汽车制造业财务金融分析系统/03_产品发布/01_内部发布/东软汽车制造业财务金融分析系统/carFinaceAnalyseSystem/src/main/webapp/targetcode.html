@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指标维护</title>
+  <link href="css/commonstyle.css" type="text/css" rel="stylesheet"/>
+  <link href="css/targetcodestyle.css" type="text/css" rel="stylesheet"/>
+  <script src="script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<img class="left_bg" src="images/top.png" />
+<img class="top_bg" src="images/top.png" />
+<img class="top_icon" src="images/icon.png" />
+<p><span class="top_title">财务金融分析系统 ·</span></p>
+<p><span class="top_subtitle">东软汽车制造业</span></p>
+<ul class="top_menu">
+  <li><a href="index1.html" style="width: 143px;">首页</a></li>
+  <li><a href="overall.html" style="width: 249px;">总体运行情况分析</a></li>
+  <li><a href="profitability.html" style="width: 218px;">获利能力分析</a></li>
+  <li><a href="custom.html" style="width: 203px;">自定义分析</a></li>
+  <li><a href="target.html" style="width: 203px;">基础数据维护</a></li>
+</ul>
+<a href="index1.html"><img class="top_icon1" src="images/topicon1.png" /></a>
+<a href="overall.html"><img class="top_icon2" src="images/topicon2.png" /></a>
+<a href="profitability.html"><img class="top_icon3" src="images/topicon3.png" /></a>
+<a href="custom.html"><img class="top_icon4" src="images/topicon4.png" /></a>
+<a href="target.html"><img class="top_icon5" src="images/topicon5.png" /></a>
+<ul class="left_menu">
+  <li><a href="targetcode.html">指标维护</a></li>
+  <li><a href="targetname.html">指标展示名称维护</a></li>
+  <li><a href="targetstructure.html">指标结构维护</a></li>
+  <li><a href="targetrelation.html">关联计算指标维护</a></li>
+</ul>
+<p><span id="targetcode_title">指标维护</span></p>
+<form id="frm1">
+  <input type="text" id="text_retrieve" class="retrieve_cls" name="code" placeholder="请输入一个指标代码以查询其对应的指标名称和内容，支持模糊查询，将在下方表格中返回所有可能的结果"/>
+</form>
+<form id="frm2">
+  <input type="text" id="text_create" class="create_cls" name="code" placeholder="请输入一个确切的指标代码以新建，指标名称默认为无，指标内容请在下框中填写，不填写默认为无"/>
+  <input type="text" id="text_content" class="content_cls" name="content" placeholder="请输入创建的指标代码的内容，不填写默认为无"/>
+</form>
+<form id="frm3">
+  <input type="text" id="text_delete" class="delete_cls" name="codes" placeholder="请输入一组确切的指标代码以删除，支持批量删除，请用,，;；、中任意间隔符间隔输入"/>
+</form>
+<button class="submit_retrieve" onclick="retrieve()">查询</button>
+<button class="submit_create" onclick="create()">新增</button>
+<button class="submit_delete" onclick="delete1()">删除</button>
+<table id="tb1" class="tb_cls1"></table>
+<table id="tb2" class="tb_cls2"></table>
+<script>
+  function retrieve(){
+    var params=$("#frm1").serialize();
+    var code=$("#text_retrieve").val();
+    if(code===""){
+      window.alert("指标代码不得为空!");
+      return;
+    }
+    $.getJSON(
+            "retrieve.targetcode.do",
+            params,
+            function(data){
+              $("#tb1").html("");
+              $("#tb2").html("");
+              var a=data.dataset;
+              if(a.length===0){
+                window.alert("未查询到对应的指标!");
+                return;
+              }
+              window.alert("查询结束!");
+              var html="<tr><th>序号</th><th>指标代码</th><th>指标名称</th><th>指标内容</th></tr>";
+              for(let i=0;i<a.length;i++){
+                html+="<tr><td>"+(i+1)+"</td>";
+                for(var s of a[i]) html+="<td>"+s+"</td>";
+                html+="</tr>";
+              }
+              $("#tb1").html(html);
+            }
+    );
+  }
+  function create(){
+    var params=$("#frm2").serialize();
+    var code=$("#text_create").val();
+    if(code===""){
+      window.alert("指标代码不得为空!");
+      return;
+    }
+    $.getJSON(
+            "create.targetcode.do",
+            params,
+            function(data){
+              $("#tb1").html("");
+              $("#tb2").html("");
+              if(data) window.alert("新增成功!");
+              else window.alert("新增失败，指标代码已存在!");
+            }
+    );
+  }
+  function delete1(){
+    var params=$("#frm3").serialize();
+    var codes=$("#text_delete").val();
+    if(codes===""){
+      window.alert("指标代码不得为空!");
+      return;
+    }
+    $.getJSON(
+            "delete.targetcode.do",
+            params,
+            function(data){
+              $("#tb1").html("");
+              $("#tb2").html("");
+              window.alert("删除结束!结果如下!");
+              var a=data.dataset;
+              var html="<tr><th>序号</th><th>指标代码</th><th>删除情况说明</th></tr>";
+              for(let i=0;i<a.length;i++){
+                html+="<tr><td>"+(i+1)+"</td>";
+                for(var s of a[i]) html+="<td>"+s+"</td>";
+                html+="</tr>";
+              }
+              $("#tb2").html(html);
+            }
+    );
+  }
+</script>
+</body>
+</html>

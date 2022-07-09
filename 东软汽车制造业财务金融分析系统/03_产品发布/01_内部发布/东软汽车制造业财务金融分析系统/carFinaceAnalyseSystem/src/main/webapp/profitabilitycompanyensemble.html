@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分单位分析—整体</title>
+    <link href="css/commonstyle.css" type="text/css" rel="stylesheet"/>
+    <link href="css/profitabilitycompanyensemblestyle.css" type="text/css" rel="stylesheet"/>
+    <script src="script/echarts.min.js"></script>
+    <script src="script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<img class="left_bg" src="images/top.png" />
+<img class="top_bg" src="images/top.png" />
+<img class="top_icon" src="images/icon.png" />
+<p><span class="top_title">财务金融分析系统 ·</span></p>
+<p><span class="top_subtitle">东软汽车制造业</span></p>
+<ul class="top_menu">
+    <li><a href="index1.html" style="width: 143px;">首页</a></li>
+    <li><a href="overall.html" style="width: 249px;">总体运行情况分析</a></li>
+    <li><a href="profitability.html" style="width: 218px;">获利能力分析</a></li>
+    <li><a href="custom.html" style="width: 203px;">自定义分析</a></li>
+    <li><a href="target.html" style="width: 203px;">基础数据维护</a></li>
+</ul>
+<a href="index1.html"><img class="top_icon1" src="images/topicon1.png" /></a>
+<a href="overall.html"><img class="top_icon2" src="images/topicon2.png" /></a>
+<a href="profitability.html"><img class="top_icon3" src="images/topicon3.png" /></a>
+<a href="custom.html"><img class="top_icon4" src="images/topicon4.png" /></a>
+<a href="target.html"><img class="top_icon5" src="images/topicon5.png" /></a>
+<ul class="left_menu">
+    <li><a href="profitabilitytotal.html">总体盈利情况</a></li>
+    <li><a href="profitabilitytrend.html">趋势分析</a></li>
+    <li><a href="profitabilitycompanyensemble.html">分单位分析—整体</a></li>
+    <li><a href="profitabilitycompanypart.html">分单位分析—局部</a></li>
+</ul>
+<p><span id="profitablitiycompanyensemble_title">分单位分析—整体</span></p>
+<form id="frm">
+    <select class="opt_year_common" id="year" name="year">
+        <option selected value="0">(请选择年份)</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+    </select>
+    <select class="opt_month_common" id="month" name="month">
+        <option selected value="0">(请选择月份)</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+</form>
+<button class="opt_submit_common" onclick="fun()">查询</button>
+<table id="tb" class="tb_cls"></table>
+<script>
+    function fun(){
+        var params=$("#frm").serialize();
+        var year=$("#year").val();
+        var month=$("#month").val();
+        if(year==="0"||month==="0") return;
+        window.alert("正在查询中...");
+        $.getJSON(
+            "profitabilitycompanyensemble.do",
+            params,
+            function(data){
+                window.alert("查询成功！");
+                var name=new Array();
+                var code=new Array();
+                $.each(data.names,function(k,v){
+                    code.push(k);
+                });
+                $.each(data.names,function(k,v){
+                    name.push(v);
+                });
+                var a=data.dataset;
+                var cnt=data.cnt;
+                var html="<tr><td rowspan='2'>序号</td>";
+                html+="<td rowspan='2'>公司名称</td>"
+                html+="<td rowspan='2'>公司代码</td>";
+                html+="<td colspan='6'>利润率(%)</td>";
+                html+="<td colspan='6'>净资产收益率(%)</td></tr>";
+                html+="<td>本月</td><td>上月</td><td>比上月</td>";
+                html+="<td>本年累计</td><td>上年累计</td><td>比上年</td>";
+                html+="<td>本月</td><td>上月</td><td>比上月</td>";
+                html+="<td>本年累计</td><td>上年累计</td><td>比上年</td>";
+                for(let i=0;i<cnt;i++){
+                    html+="<tr>";
+                    html+="<td>"+(i+1)+"</td>";
+                    html+="<td>"+name[i]+"</td>";
+                    html+="<td>"+code[i]+"</td>";
+                    for(let j=0;j<12;j++)
+                        html+="<td>"+a[i][j]+"</td>";
+                    html+="</tr>";
+                }
+                $("#tb").html(html);
+            }
+        )
+    }
+</script>
+</body>
+</html>

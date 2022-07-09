@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总体盈利情况</title>
+    <link href="css/commonstyle.css" type="text/css" rel="stylesheet"/>
+    <link href="css/profitabilitytotalstyle.css" type="text/css" rel="stylesheet"/>
+    <script src="script/echarts.min.js"></script>
+    <script src="script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<img class="left_bg" src="images/top.png" />
+<img class="top_bg" src="images/top.png" />
+<img class="top_icon" src="images/icon.png" />
+<p><span class="top_title">财务金融分析系统 ·</span></p>
+<p><span class="top_subtitle">东软汽车制造业</span></p>
+<ul class="top_menu">
+    <li><a href="index1.html" style="width: 143px;">首页</a></li>
+    <li><a href="overall.html" style="width: 249px;">总体运行情况分析</a></li>
+    <li><a href="profitability.html" style="width: 218px;">获利能力分析</a></li>
+    <li><a href="custom.html" style="width: 203px;">自定义分析</a></li>
+    <li><a href="target.html" style="width: 203px;">基础数据维护</a></li>
+</ul>
+<a href="index1.html"><img class="top_icon1" src="images/topicon1.png" /></a>
+<a href="overall.html"><img class="top_icon2" src="images/topicon2.png" /></a>
+<a href="profitability.html"><img class="top_icon3" src="images/topicon3.png" /></a>
+<a href="custom.html"><img class="top_icon4" src="images/topicon4.png" /></a>
+<a href="target.html"><img class="top_icon5" src="images/topicon5.png" /></a>
+<ul class="left_menu">
+    <li><a href="profitabilitytotal.html">总体盈利情况</a></li>
+    <li><a href="profitabilitytrend.html">趋势分析</a></li>
+    <li><a href="profitabilitycompanyensemble.html">分单位分析—整体</a></li>
+    <li><a href="profitabilitycompanypart.html">分单位分析—局部</a></li>
+</ul>
+<p><span id="profitablitiytotal_title">总体盈利情况分析</span></p>
+<form id="frm">
+    <select class="opt_year_common" id="year" name="year">
+        <option selected value="0">(请选择年份)</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+    </select>
+    <select class="opt_month_common" id="month" name="month">
+        <option selected value="0">(请选择月份)</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+</form>
+<button class="opt_submit_common" onclick="fun()">查询</button>
+<p><span class="text_subt1" id="subt1">总体营利状况(本月)</span></p>
+<p><span class="text_subt2" id="subt2">总体营利状况(累计)</span></p>
+<p><span class="text_num1" id="num1"></span></p>
+<p><span class="text_num2" id="num2"></span></p>
+<p><span class="text_num3" id="num3"></span></p>
+<p><span class="text_num4" id="num4"></span></p>
+<p><span class="text_sub1" id="sub1">利润总额</span></p>
+<p><span class="text_sub2" id="sub2">利润率</span></p>
+<p><span class="text_sub3" id="sub3">利润总额</span></p>
+<p><span class="text_sub4" id="sub4">利润率</span></p>
+<p><span class="text_ratio_m1" id="ratio_m1"></span></p>
+<p><span class="text_ratio_m2" id="ratio_m2"></span></p>
+<p><span class="text_ratio_y1" id="ratio_y1"></span></p>
+<p><span class="text_ratio_y2" id="ratio_y2"></span></p>
+<p><span class="text_ratio_y3" id="ratio_y3"></span></p>
+<p><span class="text_ratio_y4" id="ratio_y4"></span></p>
+<img class="img_arrow_m1" id="arrow_m1"/>
+<img class="img_arrow_m2" id="arrow_m2"/>
+<img class="img_arrow_y1" id="arrow_y1"/>
+<img class="img_arrow_y2" id="arrow_y2"/>
+<img class="img_arrow_y3" id="arrow_y3"/>
+<img class="img_arrow_y4" id="arrow_y4"/>
+<div id="dom1" class="graph1"></div>
+<div id="dom2" class="graph2"></div>
+<div id="dom3" class="graph3"></div>
+<div id="dom4" class="graph4"></div>
+<table id="tb1" class="tb_cls1"></table>
+<table id="tb2" class="tb_cls2"></table>
+<table id="tb3" class="tb_cls3"></table>
+<table id="tb4" class="tb_cls4"></table>
+<script>
+    function fun(){
+        var params=$("#frm").serialize();
+        var year=$("#year").val();
+        var month=$("#month").val();
+        if(year==="0"||month==="0") return;
+        window.alert("正在查询中...")
+        $.getJSON(
+            "profitabilitytotal.do",
+            params,
+            function(data){
+                window.alert("查询成功！");
+                document.getElementById("subt1").style="visibility:visible";
+                document.getElementById("subt2").style="visibility:visible";
+                document.getElementById("num1").style="visibility:visible";
+                document.getElementById("num2").style="visibility:visible";
+                document.getElementById("num3").style="visibility:visible";
+                document.getElementById("num4").style="visibility:visible";
+                document.getElementById("sub1").style="visibility:visible";
+                document.getElementById("sub2").style="visibility:visible";
+                document.getElementById("sub3").style="visibility:visible";
+                document.getElementById("sub4").style="visibility:visible";
+                document.getElementById("ratio_m1").style="visibility:visible";
+                document.getElementById("ratio_m2").style="visibility:visible";
+                document.getElementById("ratio_y1").style="visibility:visible";
+                document.getElementById("ratio_y2").style="visibility:visible";
+                document.getElementById("ratio_y3").style="visibility:visible";
+                document.getElementById("ratio_y4").style="visibility:visible";
+                document.getElementById("arrow_m1").style="visibility:visible";
+                document.getElementById("arrow_m2").style="visibility:visible";
+                document.getElementById("arrow_y1").style="visibility:visible";
+                document.getElementById("arrow_y2").style="visibility:visible";
+                document.getElementById("arrow_y3").style="visibility:visible";
+                document.getElementById("arrow_y4").style="visibility:visible";
+                if(data.profitIncM>=0) document.getElementById("arrow_m1").src="images/up.png";
+                else document.getElementById("arrow_m1").src="images/down.png";
+                if(data.ratioIncM>=0) document.getElementById("arrow_m2").src="images/up.png";
+                else document.getElementById("arrow_m2").src="images/down.png";
+                if(data.profitIncY>=0) document.getElementById("arrow_y1").src="images/up.png";
+                else document.getElementById("arrow_y1").src="images/down.png";
+                if(data.ratioIncY>=0) document.getElementById("arrow_y2").src="images/up.png";
+                else document.getElementById("arrow_y2").src="images/down.png";
+                if(data.profitSumIncY>=0) document.getElementById("arrow_y3").src="images/up.png";
+                else document.getElementById("arrow_y3").src="images/down.png";
+                if(data.sumRatioIncY>=0) document.getElementById("arrow_y4").src="images/up.png";
+                else document.getElementById("arrow_y4").src="images/down.png";
+                document.getElementById("num1").innerText=data.profitMoney+"亿元";
+                document.getElementById("num2").innerText=data.ratio+"%";
+                document.getElementById("num3").innerText=data.profitSum+"亿元";
+                document.getElementById("num4").innerText=data.sumRatio+"%";
+                document.getElementById("ratio_m1").innerText="比上月 "+data.profitIncM+"亿元";
+                document.getElementById("ratio_m2").innerText="比上月 "+data.ratioIncM+"%";
+                document.getElementById("ratio_y1").innerText="比上年 "+data.profitIncY+"亿元";
+                document.getElementById("ratio_y2").innerText="比上年 "+data.ratioIncY+"%";
+                document.getElementById("ratio_y3").innerText="比上年 "+data.profitSumIncRatioY+"亿元";
+                document.getElementById("ratio_y4").innerText="比上年 "+data.sumRatioIncY+"%";
+                var myChart1=echarts.init(document.getElementById("dom1"));
+                var myChart2=echarts.init(document.getElementById("dom2"));
+                var myChart3=echarts.init(document.getElementById("dom3"));
+                var myChart4=echarts.init(document.getElementById("dom4"));
+                var option1 = {
+                    title: {
+                        text:'利润总额',
+                        left: 'center',
+                        textStyle:{
+                            fontSize: 32
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['本月数','上月数','上年同期数']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [
+                        {
+                            data: [data.profitMoney,data.profitMoneyPreM,data.profitMoneyPreY],
+                            type: 'bar'
+                        }
+                    ]
+                };
+                var option2 = {
+                    title: {
+                        text:'利润率',
+                        left: 'center',
+                        textStyle:{
+                            fontSize: 32
+                        }
+                    },
+                    tooltip: {
+                        formatter: '{a} <br/>{b} : {c}%'
+                    },
+                    series: [
+                        {
+                            name: 'Pressure',
+                            type: 'gauge',
+                            detail: {
+                                formatter: '{value}'
+                            },
+                            data: [
+                                {
+                                    value: data.ratio,
+                                    name: '%'
+                                }
+                            ]
+                        }
+                    ]
+                };
+                var option3={
+                    title: {
+                        text:'利润总额',
+                        left: 'center',
+                        textStyle:{
+                            fontSize: 32
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['本年累计数','上年同期累计数']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [
+                        {
+                            data: [data.profitSum,data.profitSumPreY],
+                            type: 'bar'
+                        }
+                    ]
+                };
+                var option4 = {
+                    title: {
+                        text: '利润率',
+                        left: 'center',
+                        textStyle: {
+                            fontSize: 32
+                        }
+                    },
+                    tooltip: {
+                        formatter: '{a} <br/>{b} : {c}%'
+                    },
+                    series: [
+                        {
+                            name: 'Pressure',
+                            type: 'gauge',
+                            detail: {
+                                formatter: '{value}'
+                            },
+                            data: [
+                                {
+                                    value: data.sumRatio,
+                                    name: '%'
+                                }
+                            ]
+                        }
+                    ]
+                };
+                myChart1.setOption(option1,true);
+                myChart2.setOption(option2,true);
+                myChart3.setOption(option3,true);
+                myChart4.setOption(option4,true);
+                var html="<tr><td></td>";
+                html+="<td>利润总额(亿元)</td></tr>";
+                html+="<tr><td>本月数</td><td>"+data.profitMoney+"</td></tr>";
+                html+="<tr><td>上月数</td><td>"+data.profitMoneyPreM+"</td></tr>";
+                html+="<tr><td>上年同期数</td><td>"+data.profitMoneyPreY+"</td></tr>";
+                html+="<tr><td>环比增减量</td><td>"+data.profitIncM+"</td></tr>";
+                html+="<tr><td>同比增减量</td><td>"+data.profitIncY+"</td></tr>";
+                $("#tb1").html(html);
+                html="<tr><td></td>";
+                html+="<td>利润率(%)</td></tr>";
+                html+="<tr><td>本月数</td><td>"+data.ratio+"</td></tr>";
+                html+="<tr><td>上月数</td><td>"+data.ratioPreM+"</td></tr>";
+                html+="<tr><td>上年同期数</td><td>"+data.ratioPreY+"</td></tr>";
+                html+="<tr><td>环比增减量</td><td>"+data.ratioIncM+"</td></tr>";
+                html+="<tr><td>同比增减量</td><td>"+data.ratioIncY+"</td></tr>";
+                $("#tb2").html(html);
+                html="<tr><td></td>";
+                html+="<td>利润总额(亿元)</td></tr>";
+                html+="<tr><td>本年累计数</td><td>"+data.profitSum+"</td></tr>";
+                html+="<tr><td>上年同期累计数</td><td>"+data.profitSumPreY+"</td></tr>";
+                html+="<tr><td>同比增减量</td><td>"+data.profitSumIncY+"</td></tr>";
+                html+="<tr><td>同比增减率</td><td>"+data.profitSumIncRatioY+"</td></tr>";
+                $("#tb3").html(html);
+                html="<tr><td></td>";
+                html+="<td>利润率(%)</td></tr>";
+                html+="<tr><td>本年累计数</td><td>"+data.sumRatio+"</td></tr>";
+                html+="<tr><td>上年同期数</td><td>"+data.sumRatioY+"</td></tr>";
+                html+="<tr><td>同比增减量</td><td>"+data.sumRatioIncY+"</td></tr>";
+                $("#tb4").html(html);
+            }
+        )
+    }
+</script>
+</body>
+</html>

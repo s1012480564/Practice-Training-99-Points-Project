@@ -1,0 +1,101 @@
+#targetcode_title{
+    position:absolute;
+    left:935px;
+    top:125px;
+    width:145px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.retrieve_cls{
+    position:absolute;
+    left:435px;
+    top:220px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.create_cls{
+    position:absolute;
+    left:435px;
+    top:300px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.content_cls{
+    position:absolute;
+    left:435px;
+    top:345px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.delete_cls{
+    position:absolute;
+    left:435px;
+    top:425px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.submit_retrieve{
+    position:absolute;
+    left:1480px;
+    top:225px;
+    width:140px;
+    height:35px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.submit_create{
+    position:absolute;
+    left:1480px;
+    top:328px;
+    width:140px;
+    height:35px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.submit_delete{
+    position:absolute;
+    left:1480px;
+    top:430px;
+    width:140px;
+    height:35px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.tb_cls1{
+    position:absolute;
+    left:567px;
+    top:515px;
+    width:881px;
+    height:600px;
+}
+.tb_cls1 td, .tb_cls1 th{
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+.tb_cls1 th{
+    background-color: #CCCCCC;
+}
+.tb_cls2{
+    position:absolute;
+    left:733px;
+    top:515px;
+    width:550px;
+    height:600px;
+}
+.tb_cls2 td, .tb_cls2 th{
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+.tb_cls2 th{
+    background-color: #CCCCCC;
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多指标分析</title>
+    <link href="css/commonstyle.css" type="text/css" rel="stylesheet"/>
+    <link href="css/custommultitargetstyle.css" type="text/css" rel="stylesheet"/>
+    <script src="script/echarts.min.js"></script>
+    <script src="script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<img class="left_bg" src="images/top.png" />
+<img class="top_bg" src="images/top.png" />
+<img class="top_icon" src="images/icon.png" />
+<p><span class="top_title">财务金融分析系统 ·</span></p>
+<p><span class="top_subtitle">东软汽车制造业</span></p>
+<ul class="top_menu">
+    <li><a href="index1.html" style="width: 143px;">首页</a></li>
+    <li><a href="overall.html" style="width: 249px;">总体运行情况分析</a></li>
+    <li><a href="profitability.html" style="width: 218px;">获利能力分析</a></li>
+    <li><a href="custom.html" style="width: 203px;">自定义分析</a></li>
+    <li><a href="target.html" style="width: 203px;">基础数据维护</a></li>
+</ul>
+<a href="index1.html"><img class="top_icon1" src="images/topicon1.png" /></a>
+<a href="overall.html"><img class="top_icon2" src="images/topicon2.png" /></a>
+<a href="profitability.html"><img class="top_icon3" src="images/topicon3.png" /></a>
+<a href="custom.html"><img class="top_icon4" src="images/topicon4.png" /></a>
+<a href="target.html"><img class="top_icon5" src="images/topicon5.png" /></a>
+<ul class="left_menu">
+    <li><a href="customtrend.html">趋势分析</a></li>
+    <li><a href="customstructure.html">结构分析</a></li>
+    <li><a href="customcompany.html">分单位分析</a></li>
+    <li><a href="custommultitarget.html">多指标分析</a></li>
+</ul>
+<p><span id="custommultitarget_title">多指标分析</span></p>
+<form id="frm">
+    <select class="opt_year1" id="year1" name="year1">
+        <option selected value="0">(请选择起始年份)</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+    </select>
+    <select class="opt_month1" id="month1" name="month1">
+        <option selected value="0">(请选择起始月份)</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+    <select class="opt_year2" id="year2" name="year2">
+        <option selected value="0">(请选择结束年份)</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+    </select>
+    <select class="opt_month2" id="month2" name="month2">
+        <option selected value="0">(请选择结束月份)</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+    <span class="text_title1">指标选择</span>
+    <span class="text_title2">对比指标选择</span>
+    <span class="text_tip">单位：亿元,%</span>
+    <div class="cb11_cls">
+        <input type="checkbox" id="cb11" name="target" value="profit">利润总额
+    </div>
+    <div class="cb12_cls">
+        <input type="checkbox" id="cb12" name="target" value="asset">资产总额
+    </div>
+    <div class="cb13_cls">
+        <input type="checkbox" id="cb13" name="target" value="income">营业总收入
+    </div>
+    <div class="cb14_cls">
+        <input type="checkbox" id="cb14" name="target" value="ratioPI">利润率
+    </div>
+    <div class="cb15_cls">
+        <input type="checkbox" id="cb15" name="target" value="ratioIA">存货周转率
+    </div>
+    <div class="cb16_cls">
+        <input type="checkbox" id="cb16" name="target" value="ratioPA">净资产收益率
+    </div>
+    <input type="hidden" name="target">
+    <div class="cb21_cls">
+        <input type="checkbox" id="cb21" name="targetCmp" value="profit">利润总额
+    </div>
+    <div class="cb22_cls">
+        <input type="checkbox" id="cb22" name="targetCmp" value="asset">资产总额
+    </div>
+    <div class="cb23_cls">
+        <input type="checkbox" id="cb23" name="targetCmp" value="income">营业总收入
+    </div>
+    <div class="cb24_cls">
+        <input type="checkbox" id="cb24" name="targetCmp" value="ratioPI">利润率
+    </div>
+    <div class="cb25_cls">
+        <input type="checkbox" id="cb25" name="targetCmp" value="ratioIA">存货周转率
+    </div>
+    <div class="cb26_cls">
+        <input type="checkbox" id="cb26" name="targetCmp" value="ratioPA">净资产收益率
+    </div>
+    <input type="hidden" name="target">
+</form>
+<button class="opt_submit" onclick="fun()">查询</button>
+<table id="tb" class="tb_cls"></table>
+<script>
+    function fun(){
+        var params=$("#frm").serialize();
+        var year1=$("#year1").val();
+        var month1=$("#month1").val();
+        var year2=$("#year2").val();
+        var month2=$("#month2").val();
+        if(year1==="0"||month1==="0"||year2==="0"||month2==="0") return;
+        if(parseInt(year1)*100+parseInt(month1)>parseInt(year2)*100+parseInt(month2)){
+            window.alert("起始时间必须小于等于结束时间");
+            return;
+        }
+        var target=document.getElementsByName("target");
+        var targetCmp=document.getElementsByName("targetCmp");
+        var cnt1=0,cnt2=0;
+        for(var x of target) if(x.checked) cnt1++;
+        for(var x of targetCmp) if(x.checked) cnt2++;
+        if(cnt1===0){
+            window.alert("请至少选择一个指标");
+            return;
+        }
+        else if(cnt2===0){
+            window.alert("请至少选择一个对比指标");
+            return;
+        }
+        window.alert("正在查询中...");
+        $.getJSON(
+            "custommultitarget.do",
+            params,
+            function(data){
+                window.alert("查询成功！");
+                var names=data.names;
+                var data1=data.dataset1;
+                var data2=data.dataset2;
+                var html="<tr><th>序号</th><th>单位</th><th>指标名称</th>";
+                html+="<th>指标值</th><th>对比指标名称</th><th>对比指标值</th></tr>";
+                for(let l=0;l<names.length;l++){
+                    var name=names[l];
+                    var a1=data1[l],a2=data2[l];
+                    for(let i=0;i<a1.length;i++) for(let j=0;j<a2.length;j++){
+                        html+="<tr>";
+                        html+="<td>"+(i*a2.length+j+1)+"</td>";
+                        if(i==0&&j==0) html+="<td rowspan='"+a1.length*a2.length+"'>"+name+"</td>";
+                        for(let k=0;k<2;k++)
+                            html+="<td>"+a1[i][k]+"</td>";
+                        for(let k=0;k<2;k++)
+                            html+="<td>"+a2[j][k]+"</td>";
+                        html+="</tr>";
+                    }
+                }
+                $("#tb").html(html);
+            }
+        )
+    }
+</script>
+</body>
+</html>

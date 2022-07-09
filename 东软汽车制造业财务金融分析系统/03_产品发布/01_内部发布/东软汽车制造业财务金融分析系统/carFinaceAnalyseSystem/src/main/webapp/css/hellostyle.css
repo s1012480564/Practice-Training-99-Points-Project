@@ -1,0 +1,39 @@
+#hello_bg {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1920px;
+    height:880px;
+    opacity:0.3;
+}
+#hello_logo{
+    position:absolute;
+    left:17px;
+    top:-498px;
+    width:1890px;
+    height:1417px;
+}
+#hello_title {
+    position:absolute;
+    left:361px;
+    top:372px;
+    width:1200px;
+    height:68px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:60px;
+}
+#hello_subtitle {
+    position:absolute;
+    left:774px;
+    top:488px;
+    width:385px;
+    height:55px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:48px;
+    color:#FF0000;
+    text-align:center;
+}

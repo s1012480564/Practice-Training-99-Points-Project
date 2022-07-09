@@ -1,0 +1,93 @@
+#indexcost_title{
+    position:absolute;
+    left:845px;
+    top:125px;
+    width:325px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.text_num{
+    position:absolute;
+    left:543px;
+    top:336px;
+    width:300px;
+    height:37px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:32px;
+}
+.text_sub{
+    position:absolute;
+    left:800px;
+    top:336px;
+    width:200px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_ratio_m{
+    position:absolute;
+    left:1050px;
+    top:336px;
+    width:150px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_ratio_y{
+    position:absolute;
+    left:1300px;
+    top:336px;
+    width:150px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.img_arrow_m{
+    position:absolute;
+    left:1180px;
+    top:336px;
+    width:50px;
+    height:40px;
+    visibility:hidden;
+}
+.img_arrow_y{
+    position:absolute;
+    left:1430px;
+    top:336px;
+    width:50px;
+    height:40px;
+    visibility:hidden;
+}
+.graph{
+    position:absolute;
+    left:370px;
+    top:400px;
+    width:1350px;
+    height:800px;
+}
+.tb_cls{
+    position:absolute;
+    left:350px;
+    top:1162px;
+    width:1240px;
+    height:90px;
+}
+.tb_cls td, .tb_cls th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}

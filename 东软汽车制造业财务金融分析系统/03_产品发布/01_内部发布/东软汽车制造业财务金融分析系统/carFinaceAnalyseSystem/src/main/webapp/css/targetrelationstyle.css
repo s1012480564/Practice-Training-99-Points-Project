@@ -1,0 +1,95 @@
+#targetrelation_title{
+    position:absolute;
+    left:863px;
+    top:125px;
+    width:289px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.retrieve_cls{
+    position:absolute;
+    left:435px;
+    top:220px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.create_cls{
+    position:absolute;
+    left:435px;
+    top:300px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.csubcode_cls{
+    position:absolute;
+    left:435px;
+    top:345px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.delete_cls{
+    position:absolute;
+    left:435px;
+    top:425px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.dsubcode_cls{
+    position:absolute;
+    left:435px;
+    top:470px;
+    width:1000px;
+    height:45px;
+    font-size:20px;
+}
+.submit_retrieve{
+    position:absolute;
+    left:1480px;
+    top:225px;
+    width:140px;
+    height:35px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.submit_create{
+    position:absolute;
+    left:1480px;
+    top:328px;
+    width:140px;
+    height:35px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.submit_delete{
+    position:absolute;
+    left:1480px;
+    top:453px;
+    width:140px;
+    height:35px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-style:normal;
+    font-size:20px;
+}
+.tb_cls{
+    position:absolute;
+    left:677px;
+    top:560px;
+    width:660px;
+    height:600px;
+}
+.tb_cls td, .tb_cls th{
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+.tb_cls th{
+    background-color: #CCCCCC;
+}

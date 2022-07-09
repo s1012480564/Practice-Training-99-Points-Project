@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指标结构维护</title>
+  <link href="css/commonstyle.css" type="text/css" rel="stylesheet"/>
+  <link href="css/targetstructurestyle.css" type="text/css" rel="stylesheet"/>
+  <script src="script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<img class="left_bg" src="images/top.png" />
+<img class="top_bg" src="images/top.png" />
+<img class="top_icon" src="images/icon.png" />
+<p><span class="top_title">财务金融分析系统 ·</span></p>
+<p><span class="top_subtitle">东软汽车制造业</span></p>
+<ul class="top_menu">
+  <li><a href="index1.html" style="width: 143px;">首页</a></li>
+  <li><a href="overall.html" style="width: 249px;">总体运行情况分析</a></li>
+  <li><a href="profitability.html" style="width: 218px;">获利能力分析</a></li>
+  <li><a href="custom.html" style="width: 203px;">自定义分析</a></li>
+  <li><a href="target.html" style="width: 203px;">基础数据维护</a></li>
+</ul>
+<a href="index1.html"><img class="top_icon1" src="images/topicon1.png" /></a>
+<a href="overall.html"><img class="top_icon2" src="images/topicon2.png" /></a>
+<a href="profitability.html"><img class="top_icon3" src="images/topicon3.png" /></a>
+<a href="custom.html"><img class="top_icon4" src="images/topicon4.png" /></a>
+<a href="target.html"><img class="top_icon5" src="images/topicon5.png" /></a>
+<ul class="left_menu">
+  <li><a href="targetcode.html">指标维护</a></li>
+  <li><a href="targetname.html">指标展示名称维护</a></li>
+  <li><a href="targetstructure.html">指标结构维护</a></li>
+  <li><a href="targetrelation.html">关联计算指标维护</a></li>
+</ul>
+<p><span id="targetstructure_title">指标结构维护</span></p>
+<form id="frm1">
+  <input type="text" id="text_retrieve" class="retrieve_cls" name="code" placeholder="请输入一个确切的指标代码，将在下方表格中返回所有子指标(包括关联指标)"/>
+</form>
+<form id="frm2">
+  <input type="text" id="text_create" class="create_cls" name="code" placeholder="请输入一个确切的指标代码"/>
+  <input type="text" id="text_csubcode" class="csubcode_cls" name="subcode" placeholder="请输入新子指标关系中的子指标代码"/>
+</form>
+<form id="frm3">
+  <input type="text" id="text_delete" class="delete_cls" name="code" placeholder="请输入一个指标代码"/>
+  <input type="text" id="text_dsubcode" class="dsubcode_cls" name="subcode" placeholder="请输入待删除子指标关系中的子指标代码"/>
+</form>
+<button class="submit_retrieve" onclick="retrieve()">查询</button>
+<button class="submit_create" onclick="create()">新增</button>
+<button class="submit_delete" onclick="delete1()">删除</button>
+<table id="tb" class="tb_cls"></table>
+<script>
+  function retrieve(){
+    var params=$("#frm1").serialize();
+    var code=$("#text_retrieve").val();
+    if(code===""){
+      window.alert("指标代码不得为空!");
+      return;
+    }
+    $.getJSON(
+            "retrieve.targetstructure.do",
+            params,
+            function(data){
+              $("#tb").html("");
+              if(!data.found){
+                window.alert("该指标代码不存在!");
+                return;
+              }
+              if(data.isnull){
+                window.alert("该指标代码不存在子指标!");
+                return;
+              }
+              var a=data.dataset;
+              window.alert("查询结束!");
+              var html="<tr><th>序号</th><th>指标代码</th><th>子指标代码</th></tr>";
+              for(let i=0;i<a.length;i++){
+                html+="<tr><td>"+(i+1)+"</td>";
+                for(var s of a[i]) html+="<td>"+s+"</td>";
+                html+="</tr>";
+              }
+              $("#tb").html(html);
+            }
+    );
+  }
+  function create(){
+    var params=$("#frm2").serialize();
+    var code=$("#text_create").val();
+    var subcode=$("#text_csubcode").val();
+    if(code===""){
+      window.alert("指标代码不得为空!");
+      return;
+    }
+    if(subcode===""){
+      window.alert("子指标代码不得为空!");
+      return;
+    }
+    $.getJSON(
+            "create.targetstructure.do",
+            params,
+            function(data){
+              $("#tb").html("");
+              if(data.noCode){
+                window.alert("输入的指标代码不存在!");
+                return;
+              }
+              if(data.noSubcode){
+                window.alert("输入的子指标代码不存在!");
+                return;
+              }
+              if(data.hasRela){
+                window.alert("该子指标关系已存在!");
+                return;
+              }
+              window.alert("新增成功!");
+            }
+    );
+  }
+  function delete1(){
+    var params=$("#frm3").serialize();
+    var code=$("#text_delete").val();
+    var subcode=$("#text_dsubcode").val();
+    if(code===""){
+      window.alert("指标代码不得为空!");
+      return;
+    }
+    if(subcode===""){
+      window.alert("子指标代码不得为空!");
+      return;
+    }
+    $.getJSON(
+            "delete.targetstructure.do",
+            params,
+            function(data){
+              $("#tb").html("");
+              if(data){
+                window.alert("删除成功!");
+              }
+              else{
+                window.alert("删除失败，该子指标关系不存在!");
+              }
+            }
+    );
+  }
+</script>
+</body>
+</html>

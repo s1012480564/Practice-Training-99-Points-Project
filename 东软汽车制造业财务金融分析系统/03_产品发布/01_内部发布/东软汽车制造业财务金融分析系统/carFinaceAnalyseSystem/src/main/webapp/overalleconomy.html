@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>主要经济指标</title>
+<link href="css/commonstyle.css" type="text/css" rel="stylesheet"/>
+<link href="css/overalleconomystyle.css" type="text/css" rel="stylesheet"/>
+<script src="script/echarts.min.js"></script>
+<script src="script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<img class="left_bg" src="images/top.png" />
+<img class="top_bg" src="images/top.png" />
+<img class="top_icon" src="images/icon.png" />
+<p><span class="top_title">财务金融分析系统 ·</span></p>
+<p><span class="top_subtitle">东软汽车制造业</span></p>
+<ul class="top_menu">
+    <li><a href="index1.html" style="width: 143px;">首页</a></li>
+    <li><a href="overall.html" style="width: 249px;">总体运行情况分析</a></li>
+    <li><a href="profitability.html" style="width: 218px;">获利能力分析</a></li>
+    <li><a href="custom.html" style="width: 203px;">自定义分析</a></li>
+    <li><a href="target.html" style="width: 203px;">基础数据维护</a></li>
+</ul>
+<a href="index1.html"><img class="top_icon1" src="images/topicon1.png" /></a>
+<a href="overall.html"><img class="top_icon2" src="images/topicon2.png" /></a>
+<a href="profitability.html"><img class="top_icon3" src="images/topicon3.png" /></a>
+<a href="custom.html"><img class="top_icon4" src="images/topicon4.png" /></a>
+<a href="target.html"><img class="top_icon5" src="images/topicon5.png" /></a>
+<ul class="left_menu">
+    <li><a href="overalleconomy.html">主要经济指标</a></li>
+    <li><a href="overallsale.html">产销销售情况</a></li>
+    <li><a href="overallbenefit.html">效益情况分析</a></li>
+    <li><a href="overalltrend.html">趋势分析</a></li>
+    <li><a href="overallstructure.html">结构分析</a></li>
+    <li><a href="overallcompany.html">分单位分析</a></li>
+</ul>
+<p><span id="overalleconomy_title">主要经济指标分析</span></p>
+<form id="frm">
+    <select class="opt_year_common" id="year" name="year">
+        <option selected value="0">(请选择年份)</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+    </select>
+    <select class="opt_month_common" id="month" name="month">
+        <option selected value="0">(请选择月份)</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+</form>
+<button class="opt_submit_common" onclick="fun()">查询</button>
+<p><span class="tip_text" id="tip">单位：万辆、亿元</span></p>
+<table id="tb" class="tb_cls"></table>
+<script>
+    function fun(){
+        var params=$("#frm").serialize();
+        var year=$("#year").val();
+        var month=$("#month").val();
+        if(year==="0"||month==="0") return;
+        window.alert("正在查询中...")
+        $.getJSON(
+            "overalleconomy.do",
+            params,
+            function(data) {
+                window.alert("查询成功！");
+                var a=data.dataset;
+                var name=["产量","销量","库存量","资产总额","负债合计","所有者权益","营业收入","利润总额","资产负债率(%)","营运资金","利润率%"];
+                var html="";
+                html+="<tr>";
+                html+="<th rowspan='2'>项目</th>";
+                html+="<th colspan='3'>月份</th>";
+                html+="<th colspan='3'>累计</th>";
+                html+="</tr><tr>";
+                html+="<th>本月</th>";
+                html+="<th>上月</th>";
+                html+="<th>增减</th>";
+                html+="<th>本年</th>";
+                html+="<th>上年</th>";
+                html+="<th>增减</th>";
+                html+="</tr><tr>";
+                html+="<th>一、产销量指标</th>";
+                for(let i=0;i<6;i++) html+="<th></th>";
+                html+="</tr><tr>";
+                for(let i=0;i<3;i++){
+                    html+="<th>"+name[i]+"</th>";
+                    for(let j=0;j<6;j++) html+="<td>"+a[i][j]+"</td>";
+                    html+="</tr><tr>";
+                }
+                html+="<th>二、资产负债项目</th>";
+                for(let i=0;i<6;i++) html+="<th></th>";
+                html+="</tr><tr>";
+                for(let i=3;i<6;i++){
+                    html+="<th>"+name[i]+"</th>";
+                    for(let j=0;j<6;j++) html+="<td>"+a[i][j]+"</td>";
+                    html+="</tr><tr>";
+                }
+                html+="<th>三、利润项目</th>";
+                for(let i=0;i<6;i++) html+="<th></th>";
+                html+="</tr><tr>";
+                for(let i=6;i<8;i++){
+                    html+="<th>"+name[i]+"</th>";
+                    for(let j=0;j<6;j++) html+="<td>"+a[i][j]+"</td>";
+                    html+="</tr><tr>";
+                }
+                html+="<th>四、财务指标</th>";
+                for(let i=0;i<6;i++) html+="<th></th>";
+                html+="</tr><tr>";
+                for(let i=8;i<11;i++){
+                    html+="<th>"+name[i]+"</th>";
+                    for(let j=0;j<6;j++) html+="<td>"+a[i][j]+"</td>";
+                    if(i!==10) html+="</tr><tr>";
+                }
+                html+="</tr>";
+                $("#tb").html(html);
+            }
+        )
+    }
+</script>
+</body>
+</html>

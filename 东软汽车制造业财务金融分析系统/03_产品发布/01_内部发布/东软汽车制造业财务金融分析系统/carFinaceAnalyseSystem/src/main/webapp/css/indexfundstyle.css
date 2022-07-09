@@ -1,0 +1,221 @@
+#indexfund_title{
+    position:absolute;
+    left:863px;
+    top:125px;
+    width:289px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.text_num1{
+    position:absolute;
+    left:543px;
+    top:336px;
+    width:300px;
+    height:37px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:32px;
+}
+.text_num2{
+    position:absolute;
+    left:894px;
+    top:336px;
+    width:300px;
+    height:37px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:32px;
+}
+.text_num3{
+    position:absolute;
+    left:1267px;
+    top:336px;
+    width:300px;
+    height:37px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:32px;
+}
+.text_sub1{
+    position:absolute;
+    left:543px;
+    top:403px;
+    width:97px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_sub2{
+    position:absolute;
+    left:894px;
+    top:403px;
+    width:97px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_sub3{
+    position:absolute;
+    left:1267px;
+    top:403px;
+    width:97px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_ratio_m1{
+    position:absolute;
+    left:680px;
+    top:403px;
+    width:150px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_ratio_m2{
+    position:absolute;
+    left:1031px;
+    top:403px;
+    width:150px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_ratio_m3{
+    position:absolute;
+    left:1410px;
+    top:403px;
+    width:150px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_ratio_y1{
+    position:absolute;
+    left:680px;
+    top:463px;
+    width:150px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_ratio_y2{
+    position:absolute;
+    left:1031px;
+    top:463px;
+    width:150px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.text_ratio_y3{
+    position:absolute;
+    left:1410px;
+    top:463px;
+    width:150px;
+    height:29px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    visibility:hidden;
+    font-size:24px;
+}
+.img_arrow_m1{
+    position:absolute;
+    left:810px;
+    top:398px;
+    width:50px;
+    height:40px;
+    visibility:hidden;
+}
+.img_arrow_m2{
+    position:absolute;
+    left:1160px;
+    top:398px;
+    width:50px;
+    height:40px;
+    visibility:hidden;
+}
+.img_arrow_m3{
+    position:absolute;
+    left:1540px;
+    top:398px;
+    width:50px;
+    height:40px;
+    visibility:hidden;
+}
+.img_arrow_y1{
+    position:absolute;
+    left:810px;
+    top:458px;
+    width:50px;
+    height:40px;
+    visibility:hidden;
+}
+.img_arrow_y2{
+    position:absolute;
+    left:1160px;
+    top:458px;
+    width:50px;
+    height:40px;
+    visibility:hidden;
+}
+.img_arrow_y3{
+    position:absolute;
+    left:1540px;
+    top:458px;
+    width:50px;
+    height:40px;
+    visibility:hidden;
+}
+.graph{
+    position:absolute;
+    left:370px;
+    top:573px;
+    width:1350px;
+    height:800px;
+}
+.tb_cls{
+    position:absolute;
+    left:350px;
+    top:1335px;
+    width:1240px;
+    height:90px;
+}
+.tb_cls td, .tb_cls th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}

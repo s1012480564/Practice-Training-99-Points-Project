@@ -1,0 +1,95 @@
+#profitablitiycompanypart_title{
+    position:absolute;
+    left:761px;
+    top:125px;
+    width:409px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.graph{
+    position:absolute;
+    left:370px;
+    top:510px;
+    width:1350px;
+    height:800px;
+}
+.r1_cls{
+    position:absolute;
+    left:499px;
+    top:325px;
+    width:100px;
+    height:23px;
+}
+.r2_cls{
+    position:absolute;
+    left:670px;
+    top:325px;
+    width:100px;
+    height:23px;
+}
+.r3_cls{
+    position:absolute;
+    left:852px;
+    top:325px;
+    width:100px;
+    height:23px;
+}
+.r4_cls{
+    position:absolute;
+    left:1023px;
+    top:325px;
+    width:118px;
+    height:23px;
+}
+.r5_cls{
+    position:absolute;
+    left:499px;
+    top:390px;
+    width:138px;
+    height:23px;
+}
+.r6_cls{
+    position:absolute;
+    left:670px;
+    top:390px;
+    width:146px;
+    height:23px;
+}
+.cb1_cls{
+    position:absolute;
+    left:852px;
+    top:390px;
+    width:119px;
+    height:23px;
+}
+.cb2_cls{
+    position:absolute;
+    left:1023px;
+    top:390px;
+    width:159px;
+    height:23px;
+}
+.text1{
+    position:absolute;
+    left:499px;
+    top:459px;
+    width:21px;
+    height:23px;
+}
+.text2{
+    position:absolute;
+    left:615px;
+    top:459px;
+    width:21px;
+    height:23px;
+}
+.num_cls{
+    position:absolute;
+    left:530px;
+    top:459px;
+    width:75px;
+    height:23px;
+}

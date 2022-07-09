@@ -1,0 +1,67 @@
+#customcompany_title{
+    position:absolute;
+    left:797px;
+    top:125px;
+    width:337px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.graph{
+    position:absolute;
+    left:370px;
+    top:525px;
+    width:1350px;
+    height:800px;
+}
+.r1_cls{
+    position:absolute;
+    left:852px;
+    top:400px;
+    width:100px;
+    height:23px;
+}
+.r2_cls{
+    position:absolute;
+    left:1023px;
+    top:400px;
+    width:100px;
+    height:23px;
+}
+.r3_cls{
+    position:absolute;
+    left:499px;
+    top:471px;
+    width:138px;
+    height:23px;
+}
+.r4_cls{
+    position:absolute;
+    left:670px;
+    top:471px;
+    width:146px;
+    height:23px;
+}
+.text1{
+    position:absolute;
+    left:897px;
+    top:471px;
+    width:21px;
+    height:23px;
+}
+.text2{
+    position:absolute;
+    left:1013px;
+    top:471px;
+    width:21px;
+    height:23px;
+}
+.num_cls{
+    position:absolute;
+    left:928px;
+    top:471px;
+    width:75px;
+    height:23px;
+}

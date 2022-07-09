@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="targetMapper">
+    <select id="selByCodePattern" parameterType="String" resultType="com.dlut.model.Target">
+        select * from target
+        where target_code like #{value}
+    </select>
+    <select id="selByNamePattern" parameterType="String" resultType="com.dlut.model.Target">
+        select * from target
+        where target_name like #{value}
+    </select>
+    <select id="selByCode" parameterType="String" resultType="com.dlut.model.Target">
+        select * from target
+        where target_code=#{value}
+    </select>
+    <select id="selAll" resultType="com.dlut.model.Target">
+        select * from target
+    </select>
+    <select id="selRelaAll" resultType="com.dlut.model.TargetRelation">
+        select * from tar_relation
+    </select>
+    <select id="selRelaByCode" parameterType="String" resultType="com.dlut.model.TargetRelation">
+        select * from tar_relation
+        where target_code=#{value}
+    </select>
+    <select id="selRela" parameterType="com.dlut.model.TargetRelation" resultType="com.dlut.model.TargetRelation">
+        select * from tar_relation
+        where target_code=#{target_code} and subtarget_code=#{subtarget_code}
+    </select>
+    <select id="selBiRelaByCode" parameterType="String" resultType="com.dlut.model.TargetRelation">
+        select *
+        from tar_relation as tr
+        where target_code=#{value} and
+        exists(select * from tar_relation
+                   where target_code=tr.subtarget_code and subtarget_code=#{value})
+    </select>
+    <select id="selBiRela" parameterType="com.dlut.model.TargetRelation" resultType="com.dlut.model.TargetRelation">
+        select * from tar_relation
+        where target_code=#{target_code} and subtarget_code=#{subtarget_code} and
+        exists(select * from tar_relation
+            where target_code=#{subtarget_code} and subtarget_code=#{target_code})
+    </select>
+    <insert id="insert" parameterType="com.dlut.model.Target">
+        insert into target values (#{target_code},#{target_name},#{content})
+    </insert>
+    <insert id="insertRela" parameterType="com.dlut.model.TargetRelation">
+        insert into tar_relation values (#{target_code},#{subtarget_code})
+    </insert>
+    <delete id="delCode" parameterType="com.dlut.model.Target">
+        delete from target where target_code=#{target_code}
+    </delete>
+    <delete id="delRelaBySubcode" parameterType="com.dlut.model.TargetRelation">
+        delete from tar_relation where subtarget_code=#{subtarget_code}
+    </delete>
+    <delete id="delRela" parameterType="com.dlut.model.TargetRelation">
+        delete from tar_relation where target_code=#{target_code} and subtarget_code=#{subtarget_code}
+    </delete>
+    <update id="updateName" parameterType="com.dlut.model.Target">
+        update target set target_name=#{target_name} where target_code=#{target_code}
+    </update>
+</mapper>

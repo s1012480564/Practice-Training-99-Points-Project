@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="carMapper">
+    <insert id="insertProduct" parameterType="com.hdfs2mysql.Product">
+        insert into product values (#{year},#{month},#{product_company},#{sale_num})
+    </insert>
+    <insert id="insertComSale" parameterType="com.hdfs2mysql.ComSale">
+        insert into com_sale values (#{year},#{month},#{com_code},#{profit},#{asset},#{income})
+    </insert>
+    <insert id="insertSaleCost" parameterType="com.hdfs2mysql.SaleCost">
+        insert into sale_cost values (#{year},#{month},#{sale_column},#{fee})
+    </insert>
+    <insert id="insertTotal" parameterType="com.hdfs2mysql.Total">
+        insert into total values (#{year},#{month},#{yield},#{stock},#{debt},#{owner_interest},
+        #{float_asset},#{float_debt},#{main_income},#{main_cost},#{tax},#{other_income},
+        #{other_cost},#{fix_asset},#{tech_fee},#{intangible_asset},#{dev_fee},#{salary},
+        #{interest_in},#{interest_out},#{exchange_change},#{asset_devalue},#{fair_value},#{invest})
+    </insert>
+</mapper>

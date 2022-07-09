@@ -1,0 +1,25 @@
+#profitablitiycompanyensemble_title{
+    position:absolute;
+    left:949px;
+    top:125px;
+    width:289px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.tb_cls{
+    position:absolute;
+    left:325px;
+    top:300px;
+    width:1540px;
+    height:900px;
+}
+.tb_cls td, .tb_cls th{
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+.tb_cls th{
+    background-color: #CCCCCC;
+}

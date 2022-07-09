@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>营业总成本情况</title>
+    <link href="css/commonstyle.css" type="text/css" rel="stylesheet"/>
+    <link href="css/indexcoststyle.css" type="text/css" rel="stylesheet"/>
+    <script src="script/echarts.min.js"></script>
+    <script src="script/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<img class="left_bg" src="images/top.png" />
+<img class="top_bg" src="images/top.png" />
+<img class="top_icon" src="images/icon.png" />
+<p><span class="top_title">财务金融分析系统 ·</span></p>
+<p><span class="top_subtitle">东软汽车制造业</span></p>
+<ul class="top_menu">
+  <li><a href="index1.html" style="width: 143px;">首页</a></li>
+  <li><a href="overall.html" style="width: 249px;">总体运行情况分析</a></li>
+  <li><a href="profitability.html" style="width: 218px;">获利能力分析</a></li>
+  <li><a href="custom.html" style="width: 203px;">自定义分析</a></li>
+  <li><a href="target.html" style="width: 203px;">基础数据维护</a></li>
+</ul>
+<a href="index1.html"><img class="top_icon1" src="images/topicon1.png" /></a>
+<a href="overall.html"><img class="top_icon2" src="images/topicon2.png" /></a>
+<a href="profitability.html"><img class="top_icon3" src="images/topicon3.png" /></a>
+<a href="custom.html"><img class="top_icon4" src="images/topicon4.png" /></a>
+<a href="target.html"><img class="top_icon5" src="images/topicon5.png" /></a>
+<ul class="left_menu">
+  <li><a href="indexamount.html">产存销情况</a></li>
+  <li><a href="indexasset.html">资产、负债、所有者权益情况</a></li>
+  <li><a href="indexprofit.html">利润总额、营业收入情况</a></li>
+  <li><a href="indexfund.html">营运资金情况</a></li>
+  <li><a href="indexfinance.html">财务指标情况</a></li>
+  <li><a href="indexassetcompose.html">资产总额、负债总额构成情况</a></li>
+  <li><a href="indexcost.html">营业总成本情况</a></li>
+</ul>
+<p><span id="indexcost_title">营业总成本情况分析</span></p>
+<form id="frm">
+  <select class="opt_year_common" id="year" name="year">
+    <option selected value="0">(请选择年份)</option>
+    <option value="2021">2021</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
+    <option value="2017">2017</option>
+    <option value="2016">2016</option>
+  </select>
+  <select class="opt_month_common" id="month" name="month">
+    <option selected value="0">(请选择月份)</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+</form>
+<button class="opt_submit_common" onclick="fun()">查询</button>
+<p><span class="text_num" id="num"></span></p>
+<p><span class="text_sub" id="sub">本年营业总成本</span></p>
+<p><span class="text_ratio_m" id="ratio_m"></span></p>
+<p><span class="text_ratio_y" id="ratio_y"></span></p>
+<img class="img_arrow_m" id="arrow_m"/>
+<img class="img_arrow_y" id="arrow_y"/>
+<div id="dom" class="graph"></div>
+<table id="tb" class="tb_cls"></table>
+<script>
+  function fun(){
+    var params=$("#frm").serialize();
+    var year=$("#year").val();
+    var month=$("#month").val();
+    if(year==="0"||month==="0") return;
+    window.alert("正在查询中...")
+    $.getJSON(
+            "indexcost.do",
+            params,
+            function(data){
+              window.alert("查询成功！");
+              document.getElementById("num").style="visibility:visible";
+              document.getElementById("sub").style="visibility:visible";
+              document.getElementById("ratio_m").style="visibility:visible";
+              document.getElementById("ratio_y").style="visibility:visible";
+              document.getElementById("arrow_m").style="visibility:visible";
+              document.getElementById("arrow_y").style="visibility:visible";
+              if(data.costRatioM>=0) document.getElementById("arrow_m").src="images/up.png";
+              else document.getElementById("arrow_m").src="images/down.png";
+              if(data.costRatioY>=0) document.getElementById("arrow_y").src="images/up.png";
+              else document.getElementById("arrow_y").src="images/down.png";
+              document.getElementById("num").innerText=data.currentCost+"亿元";
+              document.getElementById("ratio_m").innerText="环比 "+data.costRatioM+"%";
+              document.getElementById("ratio_y").innerText="同比 "+data.costRatioY+"%";
+              var xdata=new Array();
+              var ydata=new Array();
+              $.each(data.cost,function(k,v){
+                xdata.push(k);
+              });
+              $.each(data.cost,function(k,v){
+                ydata.push(v);
+              });
+              var myChart=echarts.init(document.getElementById("dom"));
+              var option = {
+                tooltip : {},
+                legend : {},
+                xAxis: {
+                  name: '年月',
+                  type: 'category',
+                  data: xdata
+                },
+                yAxis: {
+                  name: '亿元',
+                  type: 'value'
+                },
+                series: [
+                  {
+                    name: '营业成本',
+                    type: 'bar',
+                    label: {
+                      show: true
+                    },
+                    emphasis: {
+                      focus: 'series'
+                    },
+                    data: ydata
+                  }
+                ]
+              };
+              myChart.setOption(option,true);
+              var html="";
+              html+="<tr><td>营业总成本</td>";
+              for(y of ydata) html+="<td>"+y+"</td>";
+              html+="</tr>";
+              $("#tb").html(html);
+            }
+    )
+  }
+</script>
+</body>
+</html>

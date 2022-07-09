@@ -1,0 +1,29 @@
+#overalltrend_title{
+    position:absolute;
+    left:815px;
+    top:125px;
+    width:301px;
+    height:41px;
+    font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
+}
+.graph{
+    position:absolute;
+    left:370px;
+    top:315px;
+    width:1350px;
+    height:800px;
+}
+.tb_cls{
+    position:absolute;
+    left:350px;
+    top:1075px;
+    width:1240px;
+    height:90px;
+}
+.tb_cls td, .tb_cls th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
